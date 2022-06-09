@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class IllegalPhoneFormatException {
+public class IllegalPhoneFormatException extends Exception {
+    public IllegalPhoneFormatException(String msg) {
+        super(msg);
+    }
 }

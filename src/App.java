@@ -10,7 +10,7 @@ public class App {
                 "Сосиськи", "Молоко", "Картошка", "Бананы", "Кефир", "Хлеб", "Яблоки", "Яйца", "Гони деньги");
 
         HashMap<String, Integer> productList = new HashMap<>();
-        strArray.stream().forEach(elem-> addToMap(elem, productList));
+        strArray.forEach(elem -> addToMap(elem, productList));
         printMap(productList);
 
         //--------------------- ЗАДАНИЕ 2 ------------------------
@@ -22,17 +22,17 @@ public class App {
         System.out.printf("Список номеров для \"Сидоров\": %s%n", phoneBook.getPhones("Сидоров"));
     }
 
-    private static void addToMap(String str, Map<String, Integer> map){
+    private static void addToMap(String str, Map<String, Integer> map) {
         if (map.containsKey(str)) {
-            Integer newValue = map.get(str) + 1; 
+            Integer newValue = map.get(str) + 1;
             map.replace(str, newValue);
         } else {
             map.put(str, 1);
         }
     }
 
-    private static <K, V> void printMap (Map<K, V> map) {
-        for (K key: map.keySet()) {
+    private static <K, V> void printMap(Map<K, V> map) {
+        for (K key : map.keySet()) {
             System.out.println(key + ": " + map.get(key));
         }
     }
