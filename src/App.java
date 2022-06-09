@@ -1,6 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class App {
     public static void main(String[] args) throws IllegalPhoneFormatException {
@@ -8,9 +6,8 @@ public class App {
         ArrayList<String> strArray = new ArrayList<>();
         Collections.addAll(strArray, "Кефир", "Картошка", "Мука", "Яйца", "Хлеб", "Молоко", "Хлеб", "Булка",
                 "Сосиськи", "Молоко", "Картошка", "Бананы", "Кефир", "Хлеб", "Яблоки", "Яйца", "Гони деньги");
-
         HashMap<String, Integer> productList = new HashMap<>();
-        strArray.forEach(elem -> addToMap(elem, productList));
+        strArray.forEach(elem -> addToProductList(elem, productList));
         printMap(productList);
 
         //--------------------- ЗАДАНИЕ 2 ------------------------
@@ -19,15 +16,19 @@ public class App {
         phoneBook.add("+79112223344", "Петросян");
         phoneBook.add("+79604443322", "Сидоров");
         phoneBook.add("+79508889966", "Сидоров");
-        System.out.printf("Список номеров для \"Сидоров\": %s%n", phoneBook.getPhones("Сидоров"));
+        phoneBook.add("+79521234567", "Сидоров");
+        phoneBook.add("+79529876543", "Петросян");
+        printPhones("Сидоров", phoneBook);
+        printPhones("Петросян", phoneBook);
+        printPhones("Васильев", phoneBook);
     }
 
-    private static void addToMap(String str, Map<String, Integer> map) {
-        if (map.containsKey(str)) {
-            Integer newValue = map.get(str) + 1;
-            map.replace(str, newValue);
+    private static void addToProductList(String str, Map<String, Integer> productList) {
+        if (productList.containsKey(str)) {
+            Integer counter = productList.get(str) + 1;
+            productList.replace(str, counter);
         } else {
-            map.put(str, 1);
+            productList.put(str, 1);
         }
     }
 
@@ -35,6 +36,10 @@ public class App {
         for (K key : map.keySet()) {
             System.out.println(key + ": " + map.get(key));
         }
+    }
+
+    private static void printPhones(String name, PhoneBook phoneBook) {
+        System.out.printf("Список номеров для \"%s\": %s%n", name, phoneBook.getPhones(name));
     }
 
 
