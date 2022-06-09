@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class App {
-    public static void main(String[] args) throws IllegalPhoneFormatException {
+    public static void main(String[] args) {
         //--------------------- ЗАДАНИЕ 1 ------------------------
         ArrayList<String> strArray = new ArrayList<>();
         Collections.addAll(strArray, "Кефир", "Картошка", "Мука", "Яйца", "Хлеб", "Молоко", "Хлеб", "Булка",
@@ -12,15 +12,17 @@ public class App {
 
         //--------------------- ЗАДАНИЕ 2 ------------------------
         PhoneBook phoneBook = new PhoneBook();
-        phoneBook.add("+79601112233", "Васильев");
-        phoneBook.add("+79112223344", "Петросян");
-        phoneBook.add("+79604443322", "Сидоров");
-        phoneBook.add("+79508889966", "Сидоров");
-        phoneBook.add("+79521234567", "Сидоров");
-        phoneBook.add("+79529876543", "Петросян");
+        phoneBook.add(PhoneNumber.parse("+79601112233"), "Васильев");
+        phoneBook.add(PhoneNumber.parse("+79112223344") , "Петросян");
+        phoneBook.add(PhoneNumber.parse("+79604443322") , "Сидоров");
+        phoneBook.add(PhoneNumber.parse("+79508889966") , "Сидоров");
+        phoneBook.add(PhoneNumber.parse("+79521234567") , "Сидоров");
+        phoneBook.add(PhoneNumber.parse("+79529876543") , "Петросян");
+        phoneBook.add(PhoneNumber.parse("+795298765433") , "Петров");
         printPhones("Сидоров", phoneBook);
         printPhones("Петросян", phoneBook);
         printPhones("Васильев", phoneBook);
+        printPhones("Петров", phoneBook);
     }
 
     private static void addToProductList(String str, Map<String, Integer> productList) {

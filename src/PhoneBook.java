@@ -2,17 +2,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PhoneBook {
-    private HashMap<String, String> phoneList = new HashMap<>();
+    private HashMap<PhoneNumber, String> phoneList = new HashMap<>();
 
-    public void add(String phone, String value) throws IllegalPhoneFormatException {
-        if (!phone.matches("^\\+7\\d{10}$")) {
-            throw new IllegalPhoneFormatException("Invalid format: " + phone);
+    public void add(PhoneNumber phone, String value) {
+        if (phone != null){
+            phoneList.put(phone, value);
         }
-        phoneList.put(phone, value);
     }
 
-    public List<String> getPhones(String value) {
+    public List<PhoneNumber> getPhones(String name) {
         return phoneList.entrySet().stream()
-                .filter(pair -> pair.getValue().equals(value)).map(Map.Entry::getKey).collect(Collectors.toList());
+                .filter(pair -> pair.getValue().equals(name)).map(Map.Entry::getKey).collect(Collectors.toList());
     }
 }
